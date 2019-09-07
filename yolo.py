@@ -108,6 +108,7 @@ for output in layerOutputs:
 # boxes
 idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
+plates = []
 # ensure at least one detection exists
 if len(idxs) > 0:
 	# loop over the indexes we are keeping
@@ -122,6 +123,16 @@ if len(idxs) > 0:
 		text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
 		cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
+		#Cropping the plate
+		if classIDs[i] == LP:
+			cropped = image[x:(x+w), y:(y+h)]
+			plates.append(cropped)
+
+if plates != []:
+	count = 1
+	for plate in plates:
+		cv2.imshow("Plate #".count, plate)
+		count = count + 1
 # resize image 
 # size = 600
 # r = image.shape[1] / image.shape[0]
