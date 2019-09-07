@@ -152,7 +152,7 @@ if plates != []:
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		config = ("-l spa --oem 1 --psm 7")
-		text = pytesseract.image_to_string(roi, config=config)
+		text = pytesseract.image_to_string(thresh, config=config)
 		print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
