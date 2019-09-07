@@ -131,7 +131,7 @@ if len(idxs) > 0:
 		if classIDs[i] == 0:
 			cropped = image[y:(y+h) , x:(x+w)]
 			plates.append(cropped)
-			cv2.imshow("Plate" , cropped)
+			#cv2.imshow("Plate" , cropped)
 		# draw a bounding box rectangle and label on the image
 		#color = [int(c) for c in COLORS[classIDs[i]]]
 		#cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
@@ -150,6 +150,7 @@ if plates != []:
 		blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		text = pytesseract.image_to_string(blurred, config='')
 		print("[INFO] Detected Number is:",text)
+		
 		win = "Plate_N" + str(count) + ".jpg"
 		cv2.imshow(win , plate)
 		count = count + 1
