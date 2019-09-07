@@ -155,7 +155,7 @@ if plates != []:
 		#print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
-		out = np.hstack([blurred, thresh])
+		out = np.hstack([thresh])
 		cv2.imshow(win,out)
 		cv2.imwrite(win, thresh)
 		count = count + 1
