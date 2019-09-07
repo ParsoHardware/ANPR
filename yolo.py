@@ -138,10 +138,6 @@ if len(idxs) > 0:
 		#text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
 		#cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
-# show algorithm timing information on YOLO
-endAlg = time.time()
-print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
-
 
 if plates != []:
 	count = 1
@@ -151,25 +147,28 @@ if plates != []:
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
-		config = ("-l spa --oem 1 --psm 4")
-		text = pytesseract.image_to_string(thresh, config=config)
-		print("[INFO] Detected Number is:",text)
+		#config = ("-l spa --oem 1 --psm 4")
+		#text = pytesseract.image_to_string(thresh, config=config)
+		#print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
 		out = np.hstack([blurred, thresh])
 		cv2.imshow(win,out)
 		count = count + 1
 
+if plates != []:
+	count = 1
+	for plate in plates:
+		text = "Plate_N" + str(count) + ".jpg"
+		cv2.imwrite(text, plate)
+		#cv2.imshow(text , plate)
+		count = count + 1
+
+# show algorithm timing information on YOLO
+endAlg = time.time()
+print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
+
 cv2.waitKey(0)
-
-# if plates != []:
-# 	count = 1
-# 	for plate in plates:
-# 		text = "Plate_N" + str(count) + ".jpg"
-# 		cv2.imwrite(text, plate)
-# 		#cv2.imshow(text , plate)
-# 		count = count + 1
-
 #cv2.waitKey(0)
 # resize image 
 # size = 600
