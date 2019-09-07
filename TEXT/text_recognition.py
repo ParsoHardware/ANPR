@@ -94,7 +94,7 @@ rW = origW / float(newW)
 rH = origH / float(newH)
 
 # resize the image and grab the new image dimensions
-image = cv2.resize(image, (newW, newH))
+#image = cv2.resize(image, (newW, newH))
 (H, W) = image.shape[:2]
 
 # define the two output layer names for the EAST detector model that
