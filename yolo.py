@@ -146,7 +146,7 @@ print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 if plates != []:
 	count = 1
 	for plate in plates:
-		(T, thresh) = cv2.threshold(Cropped, 155, 255, cv2.THRESH_BINARY)
+		(T, thresh) = cv2.threshold(plate, 155, 255, cv2.THRESH_BINARY)
 		blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		text = pytesseract.image_to_string(blurred, config='')
 		print("Detected Number is:",text)
