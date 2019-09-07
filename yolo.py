@@ -117,17 +117,20 @@ if len(idxs) > 0:
 		(x, y) = (boxes[i][0], boxes[i][1])
 		(w, h) = (boxes[i][2], boxes[i][3])
 
-		# draw a bounding box rectangle and label on the image
-		color = [int(c) for c in COLORS[classIDs[i]]]
-		cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
-		text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
-		cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
 		#Cropping the plate
 		if classIDs[i] == 0:
 			cropped = image[y:(y+h) , x:(x+w)]
 			plates.append(cropped)
 			#cv2.imshow("Plate" , cropped)
+		# draw a bounding box rectangle and label on the image
+		#color = [int(c) for c in COLORS[classIDs[i]]]
+		#cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
+		#text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
+		#cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+# show algorithm timing information on YOLO
+endAlg = time.time()
+print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
 if plates != []:
 	count = 1
@@ -136,17 +139,13 @@ if plates != []:
 		cv2.imshow(text , plate)
 		count = count + 1
 
+cv2.waitKey(0)
 # resize image 
 # size = 600
 # r = image.shape[1] / image.shape[0]
 # dim = (int(size * r), size)
 # image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
-# show algorithm timing information on YOLO
-endAlg = time.time()
-print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
-
 # show the output image
-cv2.imshow("Image", image)
-cv2.waitKey(0)
-cv2.waitKey(0)
+# cv2.imshow("Image", image)
+# cv2.waitKey(0)
