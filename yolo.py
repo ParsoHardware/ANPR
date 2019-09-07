@@ -131,8 +131,8 @@ if len(idxs) > 0:
 if plates != []:
 	count = 1
 	for plate in plates:
-		text = "Plate N°" + str(count)
-		cv2.imshow(text , plate)
+		#text = "Plate N°" + str(count)
+		cv2.imshow("Plate" , plate)
 		count = count + 1
 # resize image 
 # size = 600
