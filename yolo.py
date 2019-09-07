@@ -8,6 +8,16 @@ import time
 import cv2
 import os
 
+####
+import imutils
+import pytesseract
+
+#import pyocr
+#import pyocr.builders
+
+from PIL import Image
+
+####
 #Time for all algorithm
 startAlg = time.time()
 
@@ -133,14 +143,23 @@ endAlg = time.time()
 print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
 
-
 if plates != []:
 	count = 1
 	for plate in plates:
-		text = "Plate_N" + str(count) + ".jpg"
-		cv2.imwrite(text, plate)
-		#cv2.imshow(text , plate)
-		count = count + 1
+		(T, thresh) = cv2.threshold(Cropped, 155, 255, cv2.THRESH_BINARY)
+		blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
+		text = pytesseract.image_to_string(blurred, config='')
+		print("Detected Number is:",text)
+
+
+
+# if plates != []:
+# 	count = 1
+# 	for plate in plates:
+# 		text = "Plate_N" + str(count) + ".jpg"
+# 		cv2.imwrite(text, plate)
+# 		#cv2.imshow(text , plate)
+# 		count = count + 1
 
 #cv2.waitKey(0)
 # resize image 
