@@ -149,7 +149,7 @@ if plates != []:
 		gray = cv2.cvtColor(plate, cv2.COLOR_BGR2GRAY) #convert to grey scale
 		blurred = cv2.bilateralFilter(gray, 11, 41, 41) #Blur to reduce noise
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
-		(T, thresh) = cv2.threshold(blurred, 200, 255, cv2.THRESH_BINARY)
+		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY)
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		text = pytesseract.image_to_string(thresh, config='')
 		print("[INFO] Detected Number is:",text)
