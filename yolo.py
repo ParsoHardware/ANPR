@@ -125,7 +125,7 @@ if len(idxs) > 0:
 
 		#Cropping the plate
 		if classIDs[i] == 0:
-			cropped = image[x:(x+w), y:(y+h)]
+			cropped = image[y:(y+h) , x:(x+w)]
 			cv2.imshow("Plate" , cropped)
 			#plates.append(cropped)
 
