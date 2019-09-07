@@ -42,6 +42,12 @@ net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 
 # load our input image and grab its spatial dimensions
 image = cv2.imread(args["image"])
+
+size = 600
+r = image.shape[1] / image.shape[0]
+dim = (int(size * r), size)
+image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
 (H, W) = image.shape[:2]
 
 # determine only the *output* layer names that we need from YOLO
@@ -100,8 +106,7 @@ for output in layerOutputs:
 
 # apply non-maxima suppression to suppress weak, overlapping bounding
 # boxes
-idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"],
-	args["threshold"])
+idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
 # ensure at least one detection exists
 if len(idxs) > 0:
@@ -115,18 +120,17 @@ if len(idxs) > 0:
 		color = [int(c) for c in COLORS[classIDs[i]]]
 		cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
 		text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
-		cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX,
-			0.5, color, 2)
+		cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 # resize image 
-size = 600
-r = image.shape[1] / image.shape[0]
-dim = (int(size * r), size)
-image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+# size = 600
+# r = image.shape[1] / image.shape[0]
+# dim = (int(size * r), size)
+# image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
 # show algorithm timing information on YOLO
 endAlg = time.time()
-print("[INFO] Cmplete algorithm took {:.6f} seconds".format(endAlg - startAlg))
+print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
 # show the output image
 cv2.imshow("Image", image)

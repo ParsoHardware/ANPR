@@ -5,7 +5,7 @@
 
 You can download the yolo pre-trained weights from:
 
-	License Plate Recognition https://drive.google.com/file/d/1PQlDcpopizwEVTplGBVvs2kKdR1guFkY/view?usp=sharing
+	License Plate Detection https://drive.google.com/file/d/1PQlDcpopizwEVTplGBVvs2kKdR1guFkY/view?usp=sharing
 
 	Objects Recognition https://drive.google.com/file/d/1OaNglrGbvZEi-_uuJ6IRWu4Xi_jEsCEQ/view?usp=sharing
 
