@@ -137,8 +137,8 @@ print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 if plates != []:
 	count = 1
 	for plate in plates:
-		text = "Plate N°" + str(count)
-		cv2.imwrite(text, plate.astype(np.uint8))
+		text = "Plate N°" + str(count) + ".jpg"
+		cv2.imwrite(text, plate)
 		#cv2.imshow(text , plate)
 		count = count + 1
 
