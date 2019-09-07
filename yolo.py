@@ -151,7 +151,7 @@ if plates != []:
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
-		text = pytesseract.image_to_string(thresh, config='')
+		text = pytesseract.image_to_string(thresh, config='--psm 4')
 		print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
