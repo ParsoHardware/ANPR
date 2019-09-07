@@ -146,13 +146,17 @@ print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 if plates != []:
 	count = 1
 	for plate in plates:
-		(T, thresh) = cv2.threshold(plate, 155, 255, cv2.THRESH_BINARY)
+		gray = cv2.cvtColor(plate, cv2.COLOR_BGR2GRAY) #convert to grey scale
+		#gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
+		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
+		(T, thresh) = cv2.threshold(gray, 155, 255, cv2.THRESH_BINARY)
 		blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		text = pytesseract.image_to_string(blurred, config='')
 		print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
-		cv2.imshow(win , blurred)
+		out = np.hstack([plate, blurred, thresh])
+		cv2.imshow(win,out)
 		count = count + 1
 
 cv2.waitKey(0)
