@@ -108,7 +108,7 @@ for output in layerOutputs:
 # boxes
 idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
-#plates = []
+plates = []
 # ensure at least one detection exists
 if len(idxs) > 0:
 	# loop over the indexes we are keeping
