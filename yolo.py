@@ -154,15 +154,16 @@ if plates != []:
 		win = "Plate_N" + str(count) + ".jpg"
 		out = np.hstack([blurred, thresh])
 		cv2.imshow(win,out)
+		cv2.imwrite(win, thresh)
 		count = count + 1
 
-if plates != []:
-	count = 1
-	for plate in plates:
-		text = "Plate_N" + str(count) + ".jpg"
-		cv2.imwrite(text, plate)
-		#cv2.imshow(text , plate)
-		count = count + 1
+# if plates != []:
+# 	count = 1
+# 	for plate in plates:
+# 		text = "Plate_N" + str(count) + ".jpg"
+# 		cv2.imwrite(text, plate)
+# 		#cv2.imshow(text , plate)
+# 		count = count + 1
 
 # show algorithm timing information on YOLO
 endAlg = time.time()
