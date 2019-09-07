@@ -43,10 +43,11 @@ net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 # load our input image and grab its spatial dimensions
 image = cv2.imread(args["image"])
 
-size = 600
-r = image.shape[1] / image.shape[0]
-dim = (int(size * r), size)
-image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+#Resize image
+# size = 600
+# r = image.shape[1] / image.shape[0]
+# dim = (int(size * r), size)
+# image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
 (H, W) = image.shape[:2]
 
