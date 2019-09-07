@@ -126,15 +126,16 @@ if len(idxs) > 0:
 		#Cropping the plate
 		if classIDs[i] == 0:
 			cropped = image[y:(y+h) , x:(x+w)]
-			cv2.imshow("Plate" , cropped)
-			#plates.append(cropped)
+			plates.append(cropped)
+			#cv2.imshow("Plate" , cropped)
 
-# if plates != []:
-# 	count = 1
-# 	for plate in plates:
-# 		#text = "Plate N°" + str(count)
-# 		cv2.imshow("Plate" , plate)
-# 		count = count + 1
+if plates != []:
+	count = 1
+	for plate in plates:
+		text = "Plate N°" + str(count)
+		cv2.imshow(text , plate)
+		count = count + 1
+
 # resize image 
 # size = 600
 # r = image.shape[1] / image.shape[0]
