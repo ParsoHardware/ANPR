@@ -174,6 +174,7 @@ endAlg = time.time()
 print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()
 #cv2.waitKey(0)
 # resize image 
 # size = 600
