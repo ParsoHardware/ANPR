@@ -8,6 +8,9 @@ import time
 import cv2
 import os
 
+#Time for all algorithm
+startAlg = time.time()
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
@@ -120,6 +123,10 @@ size = 600
 r = image.shape[1] / image.shape[0]
 dim = (int(size * r), size)
 image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
+# show algorithm timing information on YOLO
+endAlg = time.time()
+print("[INFO] Cmplete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
 # show the output image
 cv2.imshow("Image", image)
