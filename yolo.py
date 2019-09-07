@@ -147,7 +147,7 @@ if plates != []:
 	count = 1
 	for plate in plates:
 		gray = cv2.cvtColor(plate, cv2.COLOR_BGR2GRAY) #convert to grey scale
-		blurred = cv2.bilateralFilter(gray, 21, 81, 81) #Blur to reduce noise
+		blurred = cv2.bilateralFilter(gray, 11, 41, 41) #Blur to reduce noise
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 50, 255, cv2.THRESH_BINARY)
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
