@@ -151,9 +151,10 @@ if plates != []:
 		M = cv2.getRotationMatrix2D(center, -4, 1.0) #Rotate image
 		thresh = cv2.warpAffine(thresh, M, (w, h))
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
-		#config = ("-l spa --oem 1 --psm 4")
-		#text = pytesseract.image_to_string(thresh, config=config)
-		#print("[INFO] Detected Number is:",text)
+		
+		config = ("-l spa --oem 1 --psm 4")
+		text = pytesseract.image_to_string(thresh, config=config)
+		print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
 		#out = np.hstack([thresh])
