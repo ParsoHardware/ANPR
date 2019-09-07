@@ -29,8 +29,7 @@ LABELS = open(labelsPath).read().strip().split("\n")
 
 # initialize a list of colors to represent each possible class label
 np.random.seed(42)
-COLORS = np.random.randint(0, 255, size=(len(LABELS), 3),
-	dtype="uint8")
+COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), dtype="uint8")
 
 # derive the paths to the YOLO weights and model configuration
 weightsPath = os.path.sep.join([args["yolo"], "yolov3.weights"])
@@ -58,8 +57,8 @@ ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 # construct a blob from the input image and then perform a forward
 # pass of the YOLO object detector, giving us our bounding boxes and
 # associated probabilities
-blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416),
-	swapRB=True, crop=False)
+print("[INFO] Starting YOLO algorithm...")
+blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416), swapRB=True, crop=False)
 net.setInput(blob)
 start = time.time()
 layerOutputs = net.forward(ln)
@@ -133,14 +132,17 @@ if len(idxs) > 0:
 endAlg = time.time()
 print("[INFO] Complete algorithm took {:.6f} seconds".format(endAlg - startAlg))
 
+
+
 if plates != []:
 	count = 1
 	for plate in plates:
 		text = "Plate N°" + str(count)
-		cv2.imshow(text , plate)
+		cv2.imwrite(text, plate.astype(np.uint8))
+		#cv2.imshow(text , plate)
 		count = count + 1
 
-cv2.waitKey(0)
+#cv2.waitKey(0)
 # resize image 
 # size = 600
 # r = image.shape[1] / image.shape[0]
@@ -150,3 +152,6 @@ cv2.waitKey(0)
 # show the output image
 # cv2.imshow("Image", image)
 # cv2.waitKey(0)
+
+# outputFile = args.image[:-4]+'_yolo_out.jpg'
+# cv.imwrite(outputFile, frame.astype(np.uint8))
