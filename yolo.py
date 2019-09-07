@@ -155,7 +155,7 @@ if plates != []:
 		cv2.imshow(win , plate)
 		count = count + 1
 
-
+cv2.waitKey(0)
 
 # if plates != []:
 # 	count = 1
