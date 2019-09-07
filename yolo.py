@@ -124,7 +124,7 @@ if len(idxs) > 0:
 		cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 		#Cropping the plate
-		if classIDs[i] == LP:
+		if "{}".format(classIDs[i]) == "LP":
 			cropped = image[x:(x+w), y:(y+h)]
 			plates.append(cropped)
 
