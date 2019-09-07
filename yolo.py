@@ -146,6 +146,7 @@ if plates != []:
 		blurred = cv2.bilateralFilter(gray, 11, 41, 41) #Blur to reduce noise
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
+		thresh = cv2.getRotationMatrix2D(center, 30, 1.0) #Rotate image
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		#config = ("-l spa --oem 1 --psm 4")
 		#text = pytesseract.image_to_string(thresh, config=config)
