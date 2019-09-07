@@ -162,10 +162,13 @@ if plates != []:
 		else:
 			angle = -angle
 
+		print("[INFO] Rotation angle:"+str(angle))
+
 		(h, w) = thresh.shape[:2]
 		center = (w // 2, h // 2)
 		M = cv2.getRotationMatrix2D(center, angle, 1.0) #Rotate image
 		thresh = cv2.warpAffine(thresh, M, (w, h))
+
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		
 		config = ("-l spa --oem 1 --psm 4")
