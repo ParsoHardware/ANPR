@@ -89,9 +89,15 @@ orig = image.copy()
 
 # set the new width and height and then determine the ratio in change
 # for both the width and height
-(newW, newH) = (args["width"], args["height"])
-rW = origW / float(newW)
-rH = origH / float(newH)
+# (newW, newH) = (args["width"], args["height"])
+# rW = origW / float(newW)
+# rH = origH / float(newH)
+
+#resize image 
+size = args["height"]
+r = image.shape[1] / image.shape[0]
+dim = (int(size * r), size)
+image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
 # resize the image and grab the new image dimensions
 #image = cv2.resize(image, (newW, newH))
