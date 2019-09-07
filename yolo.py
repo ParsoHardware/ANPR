@@ -152,7 +152,7 @@ if plates != []:
 		print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
-		cv2.imshow(win , plate)
+		cv2.imshow(win , blurred)
 		count = count + 1
 
 cv2.waitKey(0)
