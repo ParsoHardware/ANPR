@@ -146,9 +146,25 @@ if plates != []:
 		blurred = cv2.bilateralFilter(gray, 11, 41, 41) #Blur to reduce noise
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
+		
+		coords = np.column_stack(np.where(thresh > 0))
+		angle = cv2.minAreaRect(coords)[-1]
+
+		# the `cv2.minAreaRect` function returns values in the
+		# range [-90, 0); as the rectangle rotates clockwise the
+		# returned angle trends to 0 -- in this special case we
+		# need to add 90 degrees to the angle
+		if angle < -45:
+			angle = -(90 + angle)
+
+		# otherwise, just take the inverse of the angle to make
+		# it positive
+		else:
+			angle = -angle
+
 		(h, w) = thresh.shape[:2]
 		center = (w // 2, h // 2)
-		M = cv2.getRotationMatrix2D(center, -4, 1.0) #Rotate image
+		M = cv2.getRotationMatrix2D(center, angle, 1.0) #Rotate image
 		thresh = cv2.warpAffine(thresh, M, (w, h))
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		
