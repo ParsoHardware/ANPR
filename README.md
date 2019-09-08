@@ -1,17 +1,22 @@
 # Automatic Number Plate Recognition
 
 # Dependencies
+```bash
 	Python3, tensorflow 1.0, numpy, opencv 4
+```
 
 # OpenCV 4 on Raspberry pi 3 B+
 
 ##Update the system
+```bash
 	sudo apt-get update && sudo apt-get -y dist-upgrade
 	sudo reboot
 	sudo apt-get update && sudo apt-get upgrade
 	sudo reboot
+```
 
 ##Installing Dependencies
+```bash
 	sudo apt-get install -y build-essential
 	sudo apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 	sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev
@@ -35,15 +40,18 @@
 	sudo apt-get install -y python3-pip
 	sudo pip3 install numpy scipy 
 	sudo pip3 install matplotlib
-
+```
+```bash
 	sudo apt-get install tcl-dev tk-dev python-tk python3-tk
 	git clone https://github.com/opencv/opencv.git
 	git clone https://github.com/opencv/opencv_contrib.git
-
+```
+```bash
 	cd ~/opencv
 	mkdir build
 	cd build
-
+```
+```bash
 	cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
@@ -55,32 +63,36 @@
     -D OPENCV_ENABLE_NONFREE=ON \
     -D INSTALL_PYTHON_EXAMPLES=OFF \
     -D BUILD_EXAMPLES=OFF ..
-
+```
+```bash
     sudo nano /etc/dphys-swapfile
-
 	CONF_SWAPSIZE=100 -> CONF_SWAPSIZE=1024
-
 	sudo /etc/init.d/dphys-swapfile stop
 	sudo /etc/init.d/dphys-swapfile start
-
 	free -m
-
+```
+```bash
 	make
-
+```
+```bash
 	sudo nano /etc/dphys-swapfile
 
 	CONF_SWAPSIZE=1024 -> CONF_SWAPSIZE=100
 
 	sudo /etc/init.d/dphys-swapfile stop
 	sudo /etc/init.d/dphys-swapfile start
-
+```
+```bash
 	pip3 install mahotas
 	pip3 install scikit-learn
 	pip3 install -U scikit-image
-
+```
+```bash
 	sudo make install
+```
 
 #INSTALLING TESSERACT 4
+```bash
 	sudo apt-get install libqtgui4 libqt4-test
 
 	cd ~
@@ -95,7 +107,7 @@
 	sudo mv -v eng.traineddata /usr/local/share/tessdata/
 
 	pip3 install opencv-contrib-python imutils pytesseract pillow
-
+```
 
 #YOLO Algorithm 
 ##You can download the yolo pre-trained weights from:
@@ -106,5 +118,6 @@
 
 
 ##To run the ANPR algorithm use:
-
+```bash
 	$ python3 yolo.py --image images/test.jpg --yolo lp-yolo/
+```
