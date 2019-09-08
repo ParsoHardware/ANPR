@@ -5,13 +5,13 @@
 
 # OpenCV 4 on Raspberry pi 3 B+
 
-Update the system
+##Update the system
 	sudo apt-get update && sudo apt-get -y dist-upgrade
 	sudo reboot
 	sudo apt-get update && sudo apt-get upgrade
 	sudo reboot
 
-Installing Dependencies
+##Installing Dependencies
 	sudo apt-get install -y build-essential
 	sudo apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 	sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev
@@ -35,8 +35,6 @@ Installing Dependencies
 	sudo apt-get install -y python3-pip
 	sudo pip3 install numpy scipy 
 	sudo pip3 install matplotlib
-
-
 
 	sudo apt-get install tcl-dev tk-dev python-tk python3-tk
 	git clone https://github.com/opencv/opencv.git
@@ -98,15 +96,15 @@ Installing Dependencies
 
 	pip3 install opencv-contrib-python imutils pytesseract pillow
 
-	
+
 #YOLO Algorithm 
-You can download the yolo pre-trained weights from:
+##You can download the yolo pre-trained weights from:
 
 	License Plate Detection https://drive.google.com/file/d/1PQlDcpopizwEVTplGBVvs2kKdR1guFkY/view?usp=sharing
 
 	Objects Recognition https://drive.google.com/file/d/1OaNglrGbvZEi-_uuJ6IRWu4Xi_jEsCEQ/view?usp=sharing
 
 
-To run the ANPR algorithm use:
+##To run the ANPR algorithm use:
 
 	$ python3 yolo.py --image images/test.jpg --yolo lp-yolo/
