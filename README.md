@@ -7,7 +7,7 @@
 
 # OpenCV 4 on Raspberry pi 3 B+
 
-##Update the system
+## Update the system
 ```bash
 	sudo apt-get update && sudo apt-get -y dist-upgrade
 	sudo reboot
@@ -15,7 +15,7 @@
 	sudo reboot
 ```
 
-##Installing Dependencies
+## Installing Dependencies
 ```bash
 	sudo apt-get install -y build-essential
 	sudo apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
@@ -91,7 +91,7 @@
 	sudo make install
 ```
 
-#INSTALLING TESSERACT 4
+# INSTALLING TESSERACT 4
 ```bash
 	sudo apt-get install libqtgui4 libqt4-test
 
@@ -109,15 +109,15 @@
 	pip3 install opencv-contrib-python imutils pytesseract pillow
 ```
 
-#YOLO Algorithm 
-##You can download the yolo pre-trained weights from:
+# YOLO Algorithm 
+## You can download the yolo pre-trained weights from:
 
 	License Plate Detection https://drive.google.com/file/d/1PQlDcpopizwEVTplGBVvs2kKdR1guFkY/view?usp=sharing
 
 	Objects Recognition https://drive.google.com/file/d/1OaNglrGbvZEi-_uuJ6IRWu4Xi_jEsCEQ/view?usp=sharing
 
 
-##To run the ANPR algorithm use:
+## To run the ANPR algorithm use:
 ```bash
 	$ python3 yolo.py --image images/test.jpg --yolo lp-yolo/
 ```
