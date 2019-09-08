@@ -33,9 +33,9 @@ img = cv2.imread(args["image"])
 
 #img = cv2.resize(img, (620,480) )
 
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #convert to grey scale
-gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
-edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
+#gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #convert to grey scale
+#gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
+edged = cv2.Canny(img, 30, 200) #Perform Edge detection
 
 # find contours in the edged image, keep only the largest
 # ones, and initialize our screen contour
