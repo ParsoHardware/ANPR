@@ -147,7 +147,7 @@ if plates != []:
 		#edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 		(T, thresh) = cv2.threshold(blurred, 100, 255, cv2.THRESH_BINARY_INV)
 		
-		coords = np.vstack(np.where(thresh > 0))
+		coords = np.column_stack(np.where(thresh > 0))
 		print(coords)
 		angle = cv2.minAreaRect(coords)[-1]
 		# the `cv2.minAreaRect` function returns values in the
