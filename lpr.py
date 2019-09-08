@@ -37,6 +37,7 @@ gray = cv2.imread(args["image"])
 #gray = cv2.bilateralFilter(gray, 11, 17, 17) #Blur to reduce noise
 edged = cv2.Canny(gray, 30, 200) #Perform Edge detection
 edged.imshow('image',img)
+cv2.waitKey(0)
 
 # find contours in the edged image, keep only the largest
 # ones, and initialize our screen contour
