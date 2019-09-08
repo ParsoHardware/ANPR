@@ -172,7 +172,7 @@ if plates != []:
 
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		
-		config = ("-l spa --oem 3 --psm 4")
+		config = (" --oem 3 --psm 4")
 		text = pytesseract.image_to_string(thresh, config=config)
 		print("[INFO] Detected Number is:",text)
 		
