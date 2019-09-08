@@ -119,6 +119,7 @@ for output in layerOutputs:
 idxs = cv2.dnn.NMSBoxes(boxes, confidences, args["confidence"], args["threshold"])
 
 plates = []
+CE = 5
 # ensure at least one detection exists
 if len(idxs) > 0:
 	# loop over the indexes we are keeping
@@ -129,7 +130,7 @@ if len(idxs) > 0:
 
 		#Cropping the plate
 		if classIDs[i] == 0:
-			cropped = image[y:(y+h) , x:(x+w)]
+			cropped = image[y-CE:(y+h+CE) , x-CE:(x+w+CE)]
 			plates.append(cropped)
 			#cv2.imshow("Plate" , cropped)
 		# draw a bounding box rectangle and label on the image
