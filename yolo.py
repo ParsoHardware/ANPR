@@ -167,7 +167,7 @@ if plates != []:
 		center = (w // 2, h // 2)
 		M = cv2.getRotationMatrix2D(center, angle, 1.0) #Rotate image
 		#thresh = cv2.warpAffine(thresh, M, (w, h))
-		thresh = cv2.warpAffine(thresh, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+		#thresh = cv2.warpAffine(thresh, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
 
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		
