@@ -9,13 +9,13 @@ import cv2
 import os
 
 ####
-import imutils
-import pytesseract
+# import imutils
+# import pytesseract
 
-#import pyocr
-#import pyocr.builders
+# #import pyocr
+# #import pyocr.builders
 
-from PIL import Image
+# from PIL import Image
 
 ####
 #Time for all algorithm
@@ -172,9 +172,9 @@ if plates != []:
 
 		#blurred = cv2.bilateralFilter(thresh, 11, 17, 17) #Blur to reduce noise
 		
-		config = (" --oem 3 --psm 4")
-		text = pytesseract.image_to_string(thresh, config=config)
-		print("[INFO] Detected Number is:",text)
+		# config = (" --oem 3 --psm 4")
+		# text = pytesseract.image_to_string(thresh, config=config)
+		# print("[INFO] Detected Number is:",text)
 		
 		win = "Plate_N" + str(count) + ".jpg"
 		#out = np.hstack([thresh])
