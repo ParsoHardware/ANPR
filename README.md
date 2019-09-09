@@ -41,16 +41,19 @@
 	sudo pip3 install numpy scipy 
 	sudo pip3 install matplotlib
 ```
+## Download the OpenCV repositorie
 ```bash
 	sudo apt-get install tcl-dev tk-dev python-tk python3-tk
 	git clone https://github.com/opencv/opencv.git
 	git clone https://github.com/opencv/opencv_contrib.git
 ```
+## Setting instalation directories
 ```bash
 	cd ~/opencv
 	mkdir build
 	cd build
 ```
+## Setting OpenCV options
 ```bash
 	cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
@@ -64,6 +67,7 @@
     -D INSTALL_PYTHON_EXAMPLES=OFF \
     -D BUILD_EXAMPLES=OFF ..
 ```
+## Setting system configuration to compilling 
 ```bash
     sudo nano /etc/dphys-swapfile
 	CONF_SWAPSIZE=100 -> CONF_SWAPSIZE=1024
@@ -71,9 +75,11 @@
 	sudo /etc/init.d/dphys-swapfile start
 	free -m
 ```
+## Compile OpenCV
 ```bash
 	make
 ```
+## Get back the system configuration 
 ```bash
 	sudo nano /etc/dphys-swapfile
 
@@ -82,11 +88,13 @@
 	sudo /etc/init.d/dphys-swapfile stop
 	sudo /etc/init.d/dphys-swapfile start
 ```
+## Installing aditional libreries
 ```bash
 	pip3 install mahotas
 	pip3 install scikit-learn
 	pip3 install -U scikit-image
 ```
+## OpenCV Install
 ```bash
 	sudo make install
 ```
